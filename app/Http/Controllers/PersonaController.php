@@ -10,7 +10,17 @@ class PersonaController extends Controller
   
     public function index()
     {
+        $persona = Persona::all();
+
+        if ($persona->isEmpty()){
+            $data = [
+                'message' => 'No se encontraron personas',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
         
+        return response() ->json($persona, 200);
     }
 
 
