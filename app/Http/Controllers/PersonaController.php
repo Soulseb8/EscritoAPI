@@ -4,17 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Persona;
 
 class PersonaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $persona = Persona::all();
+
+        if ($persona->isEmpty()){
+            $data = [
+                'message' => 'No se encontraron personas',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+        
+        return response() ->json($persona, 200);
     }
 
     /**

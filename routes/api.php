@@ -10,9 +10,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/personas', function(){
-    return 'Obteniendo Lista de Personas';
-});
+Route::get('/personas', [PersonaController::class, 'index']);
 
 Route::get('/personas/{id}' , function(){
     return 'Obteniendo una persona';
