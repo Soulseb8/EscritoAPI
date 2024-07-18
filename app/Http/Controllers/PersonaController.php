@@ -59,5 +59,6 @@ class PersonaController extends Controller
         return response()->json($data, 201);
    
     }
-
 }
+
+    
