@@ -18,9 +18,8 @@ Route::get('/personas/{id}' , function(){
     return 'Obteniendo una persona';
 });
 
-Route::post('/personas', function(){
-    return 'Creando Personas';
-});
+Route::post('/personas', [PersonaController::class, 'store']);
+
 
 Route::put('/personas/{id}' , function(){
     return 'Modificando Persona';

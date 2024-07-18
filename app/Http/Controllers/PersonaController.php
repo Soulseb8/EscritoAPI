@@ -23,9 +23,9 @@ class PersonaController extends Controller
     public function store(request $request){
         
         $validator = Validator::make($Request->all(),[
-            'name' => 'required',
-            'apellido' =>'required',
-            'telefono' => 'required'
+            'name' => 'required|max:255',
+            'apellido' =>'required|max:255',
+            'telefono' => 'required|digits:10'
         ]);
         if($validator->fails()){
             $data = [
@@ -35,7 +35,25 @@ class PersonaController extends Controller
             ];
             return response()->json($data, 400);
         }
+        $persona = Persona::create([
+            'name' => $request->name,
+            'apellido'=> $request->email,
+            'telefono'=> $request->telefono
+        ]);
+        
+        if (!$persona){
+            $data = [
+                'message' => "Error al crear la persona",
+                'status' => 500
+            ];
+            return response()->json($data, 500);
+        }
 
+        $data = [
+            'persona' => $persona,
+            'status' => 201
+        ];
+        return response()->json($data, 201);
    
     }
 
