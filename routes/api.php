@@ -17,8 +17,7 @@ Route::get('/personas/{id}', [PersonaController::class, 'show']);
 Route::post('/personas', [PersonaController::class, 'store']);
 
 
-Route::put('/personas/{id}' , function(){
-    return 'Modificando Persona';
-});
+Route::put('/personas/{id}' , [PersonaController::class, 'update']);
+Route::put('/personas/{id}' , [PersonaController::class, 'updatePartial']);
 
 Route::delete('/personas/{id}', [PersonaController::class, 'destroy']);
