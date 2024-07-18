@@ -11,7 +11,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/personas', function(){
-    return "Lista de Personas";
+    return "Obteniendo Lista de Personas";
+});
+
+Route::get('/personas/{id}', function(){
+    return "Obteniendo una persona";
 });
 
 Route::post('/personas', function(){
