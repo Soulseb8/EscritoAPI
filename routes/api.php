@@ -11,8 +11,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::put('/personas/{id}' , function(){
-    return 'Modificando Persona';
-});
+Route::put('/personas/{id}' , [PersonaController::class, 'update']);
+Route::put('/personas/{id}' , [PersonaController::class, 'updatePartial']);
 
 
