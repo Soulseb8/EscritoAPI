@@ -14,9 +14,7 @@ Route::get('/personas', function(){
     return 'Obteniendo Lista de Personas';
 });
 
-Route::get('/personas/{id}' , function(){
-    return 'Obteniendo una persona';
-});
+Route::get('/personas/{id}', [PersonaController::class, 'show']);
 
 Route::post('/personas', function(){
     return 'Creando Personas';

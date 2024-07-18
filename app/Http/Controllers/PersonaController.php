@@ -7,22 +7,13 @@ use Illuminate\Http\Request;
 
 class PersonaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function index()
     {
-        //
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
@@ -36,7 +27,22 @@ class PersonaController extends Controller
      */
     public function show($id)
     {
-        //
+        $persona = persona::find($id);
+
+        if(!$persona){
+            $data = [
+                'message' => 'Estudiante no encontrado',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+
+        $data = [
+            'persona' => $persona,
+            'status' => 200
+        ];
+
+        return response()->json($data, 200);
     }
 
     /**
