@@ -4,17 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Persona;
+use Illuminate\Support\Facades\Validator;
 
 class PersonaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $persona = Persona::all();
+
+        $data = [
+            'persona' => $persona,
+            'status' => 200
+        ];
+        return response()->json($data, 200);
+    }
+
+    public function store(request $request){
+        
+        $validator = Validator::make($Request->all(),[
+            'name' => 'required',
+            'apellido' =>'required',
+            'telefono' => 'required'
+        ]);
+        if($validator->fails()){
+            $data = [
+                'message' => 'error en la validacion de datos',
+                'error' => $validator->errors(),
+                'status' => 400
+            ];
+            return response()->json($data, 400);
+        }
+
+   
     }
 
     /**
@@ -22,13 +44,8 @@ class PersonaController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
+
      * Display the specified resource.
      *
      * @param  int  $id
