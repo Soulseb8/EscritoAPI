@@ -23,8 +23,4 @@ Route::put('/personas/{id}' , function(){
     return 'Modificando Persona';
 });
 
-Route::delete('/personas/{id}' , function(){
-    return 'Eliminando Persona';
-});
-
 Route::delete('/personas/{id}', [PersonaController::class, 'destroy']);
