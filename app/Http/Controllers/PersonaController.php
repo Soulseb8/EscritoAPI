@@ -17,7 +17,7 @@ class PersonaController extends Controller
 
         if ($personas->isEmpty()) {
             $data = [
-                'message' => 'No se encontraron personas',
+                'Mensaje' => 'No se encontraron personas',
                 'status' => 404
             ];
             return response()->json($data, 404);
@@ -33,7 +33,7 @@ class PersonaController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'nombre' => 'required|max:255',
             'apellido' => 'required|max:255',
             'telefono' => 'required|digits:10'
         ]);
@@ -48,7 +48,7 @@ class PersonaController extends Controller
         }
 
         $persona = Persona::create([
-            'name' => $request->name,
+            'nombre' => $request->nombre,
             'apellido' => $request->apellido,
             'telefono' => $request->telefono
         ]);
