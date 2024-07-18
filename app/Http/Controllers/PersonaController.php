@@ -166,7 +166,7 @@ class PersonaController extends Controller
         $validator=Validator::make($request->all().[
             'nombre' => 'max:255',
             'apellido' => 'max:255',
-            'telefono' => 'digits:10'
+            'telefono' => 'digits:9'
         ]);
         if ($validator->fails()){
             $data = [
