@@ -12,9 +12,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/personas', [PersonaController::class, 'index']);
 
-Route::get('/personas/{id}' , function(){
-    return 'Obteniendo una persona';
-});
+Route::get('/personas/{id}', [PersonaController::class, 'show']);
 
 Route::post('/personas', [PersonaController::class, 'store']);
 
